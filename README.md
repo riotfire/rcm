@@ -1,4 +1,4 @@
-rcm
+Recipe Card Marketing
 ===
 
-Website for Recipe Card Marketing
+Website for RecipeCardMarketing.com
