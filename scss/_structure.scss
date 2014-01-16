@@ -1,0 +1,50 @@
+body {
+	background: url(http://subtlepatterns.com/patterns/purty_wood.png);
+}
+
+.branding {
+	@include grid-column(2);
+}
+
+
+.content {
+	@include grid-column(8);
+	
+}
+
+.hero, .contact, .products {
+	@include grid-row();
+}
+
+.hero {
+	padding:$column-gutter 0;
+}
+
+.product {
+	@include grid-column(6);
+	margin-bottom:$column-gutter;
+
+	img {
+		box-shadow:0 0 0 -5px #574236,0 0 0 -10px #C0A367;
+		position:relative;
+		top:0;
+		transition: all .25s ease-out; 
+
+		&:hover{
+			box-shadow:0 10px 0 -5px #574236,0 20px 0 -10px #C0A367;
+			top:-5px;
+		}
+	}
+
+	.product-meta {
+		padding:$column-gutter/4 0 $column-gutter/2;
+	}
+
+	.this {
+		@include grid-column(6);
+	}
+
+	button {
+		@include grid-column(6);
+	}
+}
