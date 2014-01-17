@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recipe Card Marketing</title>
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Ultra' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ultra|Open+Sans:400italic,700italic,400,300,700,800|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/app.css" />
     <script src="bower_components/modernizr/modernizr.js"></script>
   </head>
@@ -118,28 +118,28 @@
     $(document).foundation();
   </script>
 
-  <script src="https://checkout.stripe.com/v2/checkout.js"></script>
+  <script src="https://checkout.stripe.com/checkout.js"></script>
 
-  <script>
-    $('#customButton').click(function(){
-      var token = function(res){
-        var $input = $('<input type=hidden name=stripeToken />').val(res.id);
-        $('form').append($input).submit();
-      };
+<script>
+  var handler = StripeCheckout.configure({
+    key: 'pk_test_vpV9mScqZxczAQAN3ulfPgAu',
+    image: 'http://a.wattpad.net/useravatar/CookieMonster3108.128.506172.jpg',
+    token: function(token, args) {
+      // Use the token to create the charge with a server-side script.
+    }
+  });
 
-      StripeCheckout.open({
-        key:         'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
-        address:     true,
-        amount:      5000,
-        currency:    'usd',
-        name:        'Recipe Card Marketing',
-        description: 'This Delicious Card!',
-        panelLabel:  'Checkout',
-        token:       token
-      });
-
-      return false;
+  document.getElementById('customButton').addEventListener('click', function(e) {
+    // Open Checkout with further options
+    handler.open({
+      name: 'Recipe Card Marketing',
+      description: '100 Recipe Cards',
+      amount: 2000,
+	  shippingAddress: true,
+	  billingAddress: true,
     });
-  </script>
+    e.preventDefault();
+  });
+</script>
   </body>
 </html>
